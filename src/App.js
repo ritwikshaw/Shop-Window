@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
-import MenuScreen from './screens/Menu'
+import NavigationContainer from './NavigationContainer'
 
 const App = () => {
 	const dispatch = useDispatch()
 	const error = useSelector((state) => state.errorReducer.error)
 
 	useEffect(() => {
-		dispatch({ type: 'FETCH_PRODUCTS_REQUEST' })
+		dispatch({ type: 'STARTUP' })
 	}, [dispatch])
 
 	if (error) {
@@ -17,7 +17,7 @@ const App = () => {
 
 	return (
 		<div className='App'>
-			<MenuScreen />
+			<NavigationContainer />
 		</div>
 	)
 }

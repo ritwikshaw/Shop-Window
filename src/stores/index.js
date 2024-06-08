@@ -6,10 +6,12 @@ import rootSaga from '../sagas'
 import { persistReducer, persistStore } from 'redux-persist'
 import ProductReducer from './products'
 import errorReducer from './error'
+import userReducer from './user'
 
 const staticReducers = {
 	ProductReducer,
 	errorReducer,
+	userReducer,
 }
 
 const persistConfig = {
