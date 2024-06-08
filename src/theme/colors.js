@@ -1,0 +1,22 @@
+const colors = {
+	main: '#f0f4ff',
+	primary: '#27BDEC',
+	secondary: '#27BCEB',
+	warning: '#FFB533CC',
+	lightYellow: '#FCC25B',
+	success: '#62BA46',
+	alert: '',
+	disable: '#a7a7a7',
+	lightGrey: '#7E7C7C',
+	lighter: '#F1F6FA',
+	grey: '#808080',
+	lighterGrey: '#4D4D4D',
+	danger: '#ED3024',
+	dark: '#292929',
+	orange: '#F68B1F',
+	dara50: 'rgba(0, 0, 0, 0.5)',
+	dark25: 'rgba(0, 0, 0, 0.25)',
+	dark15: 'rgba(0, 0, 0, 0.15)',
+	bright: '#FFFFFF',
+}
+export default colors
