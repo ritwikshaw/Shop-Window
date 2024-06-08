@@ -27,7 +27,7 @@ const AVerticalSlider = ({ autoScrollInterval = 3000 }) => {
 
 		// Clear interval on component unmount
 		return () => clearInterval(intervalId)
-	}, [autoScrollInterval])
+	}, [])
 
 	return (
 		<div className={classes.verticalSlider} ref={sliderRef}>
