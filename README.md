@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Product Showcase App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Product Showcase App is a React-based application designed to advertise different products available in stores, malls, or shopping centers. This application includes features for displaying products with images and videos, an auto-scrolling carousel, and an admin interface for managing products.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Display products with images or videos.
+- Auto-scrolling carousel for product display.
+- Admin interface to add, modify, and delete products.
+- Image upload and storage in Firebase.
+- Responsive design using Material-UI.
+- State management using Redux and Saga.
+- Animations using Framer Motion.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- Firebase (Firestore and Storage)
+- Redux
+- Redux-Saga
+- Material-UI
+- Framer Motion
+- react-responsive-carousel
+- react-video-player
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screens
 
-### `npm test`
+### User Screens
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Screen 1**: Displays products in a grid layout with fade-in and fade-out animations.
+2. **Screen 2**: Contains a video player and a vertical carousel for displaying product details.
 
-### `npm run build`
+### Admin Screens
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Product List**: Displays a list of products with options to edit or delete each product.
+2. **Product Form**: Allows the admin to add or modify products, including uploading images.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
 
-### `npm run eject`
+   ```sh
+   git clone https://github.com/yourusername/product-showcase-app.git
+   cd product-showcase-app
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install the dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```sh
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Configure Firebase:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   - Create a Firebase project in the Firebase console.
+   - Enable Firestore and Storage.
+   - Copy your Firebase config and paste it into a new file `src/firebaseConfig.js`:
 
-## Learn More
+     ```js
+     const firebaseConfig = {
+     	apiKey: 'YOUR_API_KEY',
+     	authDomain: 'YOUR_AUTH_DOMAIN',
+     	projectId: 'YOUR_PROJECT_ID',
+     	storageBucket: 'YOUR_STORAGE_BUCKET',
+     	messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+     	appId: 'YOUR_APP_ID',
+     }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+     export default firebaseConfig
+     ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start the development server:
+   ```sh
+   npm start
+   ```
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Admin Interface
 
-### Analyzing the Bundle Size
+1. Navigate to the Admin section.
+2. Use the form to add new products by providing the product name, price, media type, and images.
+3. Edit or delete existing products from the product list.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### User Interface
 
-### Making a Progressive Web App
+1. The main screen will display products in a grid layout.
+2. Navigate between screens to view more details about the products, including images and videos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Code Structure
 
-### Advanced Configuration
+- `src/components`: Contains the React components for the application.
+  - `Admin`: Components for the admin interface.
+  - `Carousel`: Component for the auto-scrolling carousel.
+  - `ProductCard`: Component to display individual product details.
+  - `VideoPlayer`: Component to play product videos.
+- `src/redux`: Contains Redux setup and Saga middleware.
+- `src/firebaseConfig.js`: Firebase configuration.
+- `src/App.js`: Main application component.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contributing
 
-### Deployment
+Contributions are welcome! Please open an issue or submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Author
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Developed by Ritwik.

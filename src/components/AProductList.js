@@ -9,11 +9,10 @@ import {
 	TableRow,
 	Paper,
 	IconButton,
-	Button,
 } from '@mui/material'
 import { Edit, Delete } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
-import { map } from 'lodash'
+import { map, get } from 'lodash'
 
 const useStyles = makeStyles((theme) => ({
 	table: {
@@ -24,11 +23,17 @@ const useStyles = makeStyles((theme) => ({
 	button: {
 		marginRight: 20,
 	},
+	image: {
+		width: 50,
+		height: 50,
+		objectFit: 'cover',
+	},
 }))
 
 const AProductList = () => {
 	const classes = useStyles()
 	const dispatch = useDispatch()
+	const [sortedProducts, setSortedProducts] = useState([])
 	const products = useSelector((state) => state.ProductReducer.products)
 
 	const handleDelete = async (id) => {
@@ -39,6 +44,13 @@ const AProductList = () => {
 		dispatch({ type: 'UPDATE_PRODUCT', payload: id })
 	}
 
+	useEffect(() => {
+		//sort products ascending by name
+		setSortedProducts(
+			[...products].sort((a, b) => get(a, 'name', '').localeCompare(b.name))
+		)
+	}, [products])
+
 	return (
 		<TableContainer className={classes.table} component={Paper}>
 			<Table aria-label='simple table'>
@@ -47,18 +59,23 @@ const AProductList = () => {
 						<TableCell>No</TableCell>
 						<TableCell>Product</TableCell>
 						<TableCell>Price</TableCell>
-						<TableCell>Media type</TableCell>
-
+						<TableCell>Image</TableCell>
 						<TableCell>Actions</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{map(products, (product, index) => (
+					{map(sortedProducts, (product, index) => (
 						<TableRow key={index}>
 							<TableCell>{index}</TableCell>
 							<TableCell>{product.name}</TableCell>
 							<TableCell>{product.price}</TableCell>
-							<TableCell>{product.mediaType}</TableCell>
+							<TableCell>
+								<img
+									src={get(product, 'images[0]', '')}
+									alt={product.name}
+									className={classes.image}
+								/>
+							</TableCell>
 							<TableCell>
 								<IconButton
 									className={classes.button}
