@@ -47,34 +47,30 @@ export default function Menu() {
 		dispatch({ type: 'UPDATE_USER_INFO', payload: value })
 	}
 
-	useEffect(() => {
-		if (userShops.length > 0) {
-			setShopId(userShops[0].id)
-			dispatch({ type: 'UPDATE_USER_INFO', payload: userShops[0].id })
-		}
-	}, [userShops])
-
 	return (
 		<div>
 			{user.shopId == '' ? (
 				<>
-					<FormControl style={{ marginTop: '20px' }}>
-						<FormLabel>Select Shop</FormLabel>
-						<Select
-							name='shopId'
-							value={shopId}
-							onChange={handleInputChange}
-							style={{ width: '100vw' }}
-							required
-						>
-							{map(userShops, (shop) => (
-								<MenuItem key={shop.id} value={shop.id}>
-									{shop.name}
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-					<AShopForm />
+					{isEmpty(userShops) ? (
+						<AShopForm />
+					) : (
+						<FormControl style={{ marginTop: '20px' }}>
+							<FormLabel>Select Shop</FormLabel>
+							<Select
+								name='shopId'
+								value={shopId}
+								onChange={handleInputChange}
+								style={{ width: '100vw' }}
+								required
+							>
+								{map(userShops, (shop) => (
+									<MenuItem key={shop.id} value={shop.id}>
+										{shop.name}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
+					)}
 				</>
 			) : isEmpty(products) ? (
 				<>
