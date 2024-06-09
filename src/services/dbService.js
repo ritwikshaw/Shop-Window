@@ -18,6 +18,7 @@ const paths = {
 	allProducts: 'allProducts/$shopId/products',
 	product: 'allProducts/$shopId/products/$productId',
 	user: 'users/$userId',
+	shops: 'shops',
 }
 
 function getPath(pathId, params) {
@@ -66,7 +67,7 @@ export const queryFs = async (pathId, params, q) => {
 			(doc) => doc.data() && data.push({ ...doc.data(), id: doc.id })
 		)
 
-		return data[0]
+		return data
 	} catch (err) {
 		log2File('Error in queryFs: ', err, pathId, params)
 		return {}
@@ -86,7 +87,7 @@ export const getFsCollection = async (pathId, params) => {
 		return docs
 	} catch (err) {
 		log2File('Error in getFsCollection: ', err, pathId, params)
-		return {}
+		return []
 	}
 }
 

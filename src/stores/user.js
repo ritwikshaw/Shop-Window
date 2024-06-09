@@ -6,6 +6,7 @@ const INITIAL_STATE = {
 	inProgress: false,
 	signedIn: false,
 	errMsg: '',
+	userShops: [],
 }
 const userSlice = createSlice({
 	name: 'userSlice',
@@ -18,6 +19,7 @@ const userSlice = createSlice({
 		loginSuccess: (state, { payload }) => {
 			state.user = payload._user || payload
 			state.signedIn = true
+			state.inProgress = false
 			return state
 		},
 		loginFailed: (state, { payload }) => {
@@ -29,6 +31,10 @@ const userSlice = createSlice({
 			state.inProgress = false
 			state.isAdmin = true
 			state.user = payload
+			return state
+		},
+		storeUserShops: (state, { payload }) => {
+			state.userShops = payload
 			return state
 		},
 		logout: (state) => {
@@ -48,6 +54,7 @@ export const {
 	loginSuccess,
 	loginFailed,
 	userIsAdmin,
+	storeUserShops,
 	logout,
 	clearUserStore,
 } = userSlice.actions

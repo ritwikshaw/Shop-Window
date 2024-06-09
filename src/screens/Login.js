@@ -8,8 +8,11 @@ import {
 	Snackbar,
 	Alert,
 	Box,
+	Radio,
 	Container,
 	Typography,
+	RadioGroup,
+	FormControlLabel,
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import CommanClasses from '../theme/commonClasses'
@@ -24,6 +27,7 @@ const Login = () => {
 	const classes = useStyles()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [mode, setMode] = useState('login')
 	const [errorMsg, setErrorMsg] = useState('')
 	const [open, setOpen] = useState(false)
 	const inProgress = useSelector((state) => state.userReducer.inProgress)
@@ -43,23 +47,40 @@ const Login = () => {
 		}
 	}, [errMsg])
 
+	const handleModeChange = (event) => {
+		setMode(event.target.value)
+	}
+
 	const handleLogin = () => {
 		if (email == '' || password == '') {
 			setErrorMsg('Please enter email and password')
 			setOpen(true)
 		} else {
-			dispatch({ type: 'LOGIN', loginInfo: { email, password } })
+			dispatch({ type: 'LOGIN', loginInfo: { email, password }, mode })
 		}
 	}
 	return (
 		<div className={classes.loginOuter}>
 			<Container maxWidth='xs' className={classes.loginContainer}>
 				<Box className={classes.logo}>
-					<img src={Logo} alt='logo' style={{ width: 220, height: 100 }} />
+					<img src={Logo} alt='logo' style={{ width: 150, height: 120 }} />
 				</Box>
 				<Typography variant='h5' component='h1' gutterBottom>
-					Login
+					{mode === 'login' ? 'Login' : 'Register'}
 				</Typography>
+				<RadioGroup
+					row
+					value={mode}
+					onChange={handleModeChange}
+					className={classes.radioGroup}
+				>
+					<FormControlLabel value='login' control={<Radio />} label='Sign In' />
+					<FormControlLabel
+						value='register'
+						control={<Radio />}
+						label='Register'
+					/>
+				</RadioGroup>
 				<TextField
 					variant='outlined'
 					label='Email Address'
