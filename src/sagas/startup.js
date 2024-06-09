@@ -28,4 +28,5 @@ export function* startup() {
 
 export function* initData() {
 	yield put({ type: 'FETCH_PRODUCTS_REQUEST' })
+	yield put({ type: 'FETCH_USER_SHOPS' })
 }
