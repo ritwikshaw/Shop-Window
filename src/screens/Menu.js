@@ -47,6 +47,13 @@ export default function Menu() {
 		dispatch({ type: 'UPDATE_USER_INFO', payload: value })
 	}
 
+	useEffect(() => {
+		if (userShops.length > 0) {
+			setShopId(userShops[0].id)
+			dispatch({ type: 'UPDATE_USER_INFO', payload: userShops[0].id })
+		}
+	}, [userShops])
+
 	return (
 		<div>
 			{user.shopId == '' ? (

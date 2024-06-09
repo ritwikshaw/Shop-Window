@@ -48,7 +48,7 @@ export const fbSignUp = async (user) => {
 			{
 				name: newUserCredential.user.displayName || '',
 				email: newUserCredential.user.email || '',
-				role: '',
+				role: 'admin',
 				shopId: '',
 			}
 		)
