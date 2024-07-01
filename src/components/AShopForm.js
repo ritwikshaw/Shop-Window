@@ -12,7 +12,7 @@ const AShopForm = () => {
 	const [fullAddress, setFullAddress] = useState('')
 
 	const { isLoaded, loadError } = useLoadScript({
-		googleMapsApiKey: 'AIzaSyA6Oz-ZHJkrHsAQsY0qhv7lH2KCT4JWJ5s',
+		googleMapsApiKey: 'XXXXXXXX',
 		libraries,
 	})
 
